@@ -51,3 +51,139 @@
 #include <iostream>
 using namespace std;
 
+void printFibonacci();
+void checkFibonacci();
+
+
+int main()
+{
+    int choice;
+
+    do
+    {
+        cout << "\n=====================================\n";
+        cout << "     FIBONACCI SEQUENCE PROGRAM\n";
+        cout << "=====================================\n";
+        cout << "1. Print First N Fibonacci Terms\n";
+        cout << "2. Check if a Number is Fibonacci\n";
+        cout << "3. Exit\n";
+
+        cout << "\nEnter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+            case 1:
+                printFibonacci();
+                break;
+
+            case 2:
+                checkFibonacci();
+                break;
+
+            case 3:
+                cout << "\nThank you for using the program.\n";
+                break;
+
+            default:
+                cout << "\nInvalid choice. Please try again.\n";
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}
+
+
+void printFibonacci()
+{
+    int n;
+
+    cout << "\nHow many terms? ";
+    cin >> n;
+
+    if (n <= 0)
+    {
+        cout << "\nError: Number of terms must be positive.\n";
+        return;
+    }
+
+    int first = 0;
+    int second = 1;
+    int next;
+
+    cout << "\nFibonacci sequence: ";
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (i == 1)
+        {
+            cout << first << " ";
+        }
+        else if (i == 2)
+        {
+            cout << second << " ";
+        }
+        else
+        {
+            next = first + second;
+            cout << next << " ";
+
+            first = second;
+            second = next;
+        }
+    }
+
+    cout << endl;
+}
+
+
+
+void checkFibonacci()
+{
+    int number;
+
+    cout << "\nEnter a number to check: ";
+    cin >> number;
+
+    if (number < 0)
+    {
+        cout << "\nNegative numbers are not Fibonacci numbers.\n";
+        return;
+    }
+
+    int first = 0;
+    int second = 1;
+    int next = 0;
+
+    bool found = false;
+
+    if (number == 0 || number == 1)
+    {
+        found = true;
+    }
+    else
+    {
+        while (next < number)
+        {
+            next = first + second;
+            first = second;
+            second = next;
+
+            if (next == number)
+            {
+                found = true;
+                break;
+            }
+        }
+    }
+
+    if (found)
+    {
+        cout << number << " is a Fibonacci number.\n";
+    }
+    else
+    {
+        cout << number << " is NOT a Fibonacci number.\n";
+    }
+}

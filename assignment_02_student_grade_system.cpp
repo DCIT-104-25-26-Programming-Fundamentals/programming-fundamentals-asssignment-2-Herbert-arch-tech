@@ -46,3 +46,38 @@
 #include <iostream>
 using namespace std;
 
+ const char getGrade(int score) {
+
+    if (score < 0 || score > 100) {
+        return *"\0";
+    }
+    else if (score >= 80) {
+        return *"A";
+    }
+    else if (score >= 70) {
+        return *"B";
+    }
+    else if (score >= 60) {
+        return *"C";
+    }
+    else if (score >= 50) {
+        return *"D";
+    }
+    else if (score < 50) {
+        return *"F";
+    }
+}
+int main() {
+    cout << "Enter student score(0-100): ";
+    int student_score;
+    cin >> student_score;
+    const char error_return = *"\0";
+
+    if (getGrade(student_score) == error_return) {
+        cout << "Error: Score must be between 0 and 100.";
+    }
+    else {
+        cout << "Grade: " << getGrade(student_score) << endl;
+    }
+
+}

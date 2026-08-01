@@ -41,4 +41,77 @@
 
 #include <iostream>
 using namespace std;
+#include <vector>
+
+double sum_of_array(vector<int>list) {
+        int sum = 0;
+        for (int num:list ) {
+            sum += num;
+        }
+        cout << "Sum: " << sum << endl;
+
+        return 0;
+}
+double average_of_array(vector<int>list) {
+        double sum = 0;
+        for (int num:list ) {
+            sum += num;
+        }
+        double average = sum / size(list);
+        cout << "Average: " << average << endl;
+
+        return 0;
+}
+
+double max_of_array(vector<int>list) {
+    int max = list[0];
+    for (int num : list) {
+        if (num > max) {
+            max = num;
+        }
+    }
+    cout << "Maximum: " << max << endl;
+
+    return 0;
+}
+
+double min_of_array(vector<int>list) {
+    int min = list[0];
+    for (int num : list) {
+        if (num < min) {
+            min = num;
+        }
+    }
+    cout << "Minimum: " << min << endl;
+
+    return 0;
+}
+
+int main() {
+    vector<int> cars = {};
+
+    cout << "How many numbers? " << endl;
+    int num_of_numbers;
+    cin >> num_of_numbers;
+    for(int i = 1; i <= num_of_numbers; i++){
+        cout << "Enter number " << i << ": ";
+        int num;
+        cin >> num;
+        if (num <= 0) {
+            cout << "Error: The number must be a positive integer" << endl;
+            break;
+        }
+        else {
+            cars.emplace_back(num);
+        }
+
+
+    }
+    sum_of_array(cars);
+    average_of_array(cars);
+    max_of_array(cars);
+    min_of_array(cars);
+
+    return 0;
+}
 
